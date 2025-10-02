@@ -1,0 +1,34 @@
+
+/* OPERATION AND FILTERS - IN, WHERE, AND, BETWEEN,OR, DISTINCT,*/
+
+/* STUDY THIS STRICTLY STEP BY STEP WITH NEW DATABASE 'practiceone'	*/
+
+exec sp_databases; /* Purpose: Lists all databases on the SQL Server instance. */
+
+use practiceone;
+
+exec sp_tables;
+
+select * from students;
+insert into students values('8','rohan Prajapti','java','UP','24214','1');
+select * from students where id in(1,2,4,6); /* IN operator is used to execute multiple value in where clause*/
+
+select * from students where id <= 4;
+
+select * from students where id <=4 AND id >=3;
+
+select * from students where id BETWEEN 2 AND 6;
+
+Select * from students where id = 3 OR id =5;
+
+select * from students where id >=1 order by name ASC;
+
+Select distinct course from students;
+
+Select distinct name from students;
+
+select distinct name from students where course='java';
+
+select distinct name from students where course IN (select distinct course from students);
+/*Above with respective course related students name and list*/
+select * from students;
