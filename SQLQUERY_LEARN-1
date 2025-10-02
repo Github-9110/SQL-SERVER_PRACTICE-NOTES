@@ -1,0 +1,50 @@
+
+/*	STUDY THIS STRICTLY STEP BY STEP	*/
+
+use nareshitdb;
+sp_helpdb;    /* Purpose: Provides detailed information about databases on the SQL Server instance.
+              show databases*/
+
+select * from INFORMATION_SCHEMA.TABLES;
+/*check the database and their tables*/
+
+exec sp_help 'students'; /* use for show table structures*/
+ 
+select * from students;
+
+alter table students
+alter column name varchar(255) not null
+
+alter table students
+add fees int  null default 0;
+
+alter table students
+alter column course varchar(255) not null;
+
+
+alter table students
+alter column address varchar(255) not null;
+
+alter table students
+add UNIQUE (id);
+/*alter table studBatch01
+add CONSTRAINT UK_studBatch01 unique (id); */
+
+
+insert into students values('5', 'abhinav', 'Java fullstack','Madhya Pradesh');
+
+alter table students
+add primary key (id);
+/*alter table studBatch01
+add CONSTRAINT PK_studBatch01 PRIMARY KEY (id); */
+
+
+exec sp_rename 'studBatch01', 'Studentone';
+/*change the table names or Rename tables : exec -> EXCUTE and sp_remane-> stored procedure*/
+
+select * from information_schema.tables;
+
+exec sp_rename 'studentone', 'studBatch01';
+
+
+
