@@ -1,0 +1,52 @@
+
+/*	STUDY THIS STRICTLY STEP BY STEP	*/
+
+use nareshitdb;
+sp_helpdb; /* show databases*/
+create table studBatch01(
+id int,
+name varchar(255),
+course varchar(255),
+address varchar(255),
+fees int 
+);
+select * from INFORMATION_SCHEMA.TABLES; /*USE FOR SHOW TABLES*/
+
+exec sp_help 'students'; /* use for show table structures*/
+insert into studBatch01 values(
+5, 'Akash kumar','Spring Boot', 'Varanasi','15000');
+
+select * from studBatch01;
+
+update studBatch01 set name ='Prince' where course ='c# language';
+
+alter table studBatch01
+alter column id int not null;
+
+alter table studBatch01
+alter column name varchar(225) not null;
+
+alter table studBatch01
+alter column course varchar(225) not null;
+
+alter table studBatch01
+alter column address varchar(225) not null;
+
+alter table studBatch01
+alter column fees int not null;
+
+
+alter table studBatch01
+add CONSTRAINT UK_studBatch01 unique (id);
+
+alter table studBatch01
+add CONSTRAINT PK_studBatch01 PRIMARY KEY (id);
+
+
+exec sp_rename 'studBatch01', 'Studentone';
+/*change the table names or Rename tables*/
+
+select * from information_schema.tables;
+
+exec sp_rename 'studentone', 'studBatch01';
+
