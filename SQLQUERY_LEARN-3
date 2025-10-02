@@ -1,0 +1,61 @@
+
+/*	STUDY THIS STRICTILY STEP BY STEP WITH NEW DATABASE 'practiceone'	*/
+
+
+use practiceone; /*database name*/
+
+select * from students;
+
+delete from students where name ='Dev';
+
+select * from students;
+
+exec sp_help 'students';
+
+alter table students
+add UNIQUE(id);
+
+alter table students
+add constraint PK_student primary key (id);
+
+create index search on students(name, course,address);
+
+select * from students with(index(search)) where name='prinsi'; 
+
+update students set name='prensi' where fees=29000;
+
+create table teachers(
+id int not null identity,
+name varchar(225) not null,
+mastering_in varchar(255) not null
+);
+
+exec sp_help 'teachers';
+
+insert into teachers values('Hari Krisha sir', 'Java');
+
+select * from teachers;
+
+
+/* Add foreign key in students*/
+alter table students
+ADD teach_id int ;
+
+alter table teachers /* Add primary key in students*/
+add constraint PK_teachers primary key (id);
+
+alter table students
+add constraint FK_students_teach
+foreign key (teach_id) references teachers(id);
+
+alter table students /* Add Default Value in students*/
+add constraint DF_students_teach_id default '1' for teach_id;
+
+
+insert into students(id, name, course, address, fees) values('7','Harish', 'Java','UP','61000');
+
+select * from students;
+
+update students set teach_id = '1' where teach_id IS NULL;
+
+
